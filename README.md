@@ -41,7 +41,7 @@ print(h)
 
 ```
 
-input_rxn_processor and output_rxn_processor are expected to be TensorFlow TextVectorization objects. 
+**input_rxn_processor** and **output_rxn_processor** are expected to be TensorFlow TextVectorization objects. 
 But any function that can take a list of input text tokens and output list of integer tokens will
 function.
 
