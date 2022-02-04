@@ -388,7 +388,7 @@ class Seq2SeqModelConstructor(tf.keras.Model):
     return [self.seq_acc_1,self.seq_acc_2,self.seq_acc_3,self.seq_acc_4,self.seq_acc_5,self.tot_acc]
   
 
-  def top_k_acc_loop(self, y_true, y_pred):
+  def _top_k_acc_loop(self, y_true, y_pred):
     """
     This only is needed because the Keras topKaccruacy seems to have issues with
     Batches?
@@ -406,7 +406,7 @@ class Seq2SeqModelConstructor(tf.keras.Model):
       self.seq_acc_4.update_state(y_true[i,:], y_pred[i,:,:], sample_weight=mask[i,:])
       self.seq_acc_5.update_state(y_true[i,:], y_pred[i,:,:], sample_weight=mask[i,:])
 
-  def preprocess(self, input_text, target_text):
+  def _preprocess(self, input_text, target_text):
     # Convert the text to token IDs
     input_tokens = self.input_rxn_processor(input_text)
     target_tokens = self.output_rxn_processor(target_text)
@@ -451,7 +451,7 @@ class Seq2SeqModelConstructor(tf.keras.Model):
       self.tot_acc.update_state(y, y_pred, target_mask[:,1:])
 
 
-      self.top_k_acc_loop(y, y_pred)
+      self._top_k_acc_loop(y, y_pred)
 
 
       acc_top1 = self.seq_acc_1.result()
@@ -507,7 +507,7 @@ class Seq2SeqModelConstructor(tf.keras.Model):
     self.tot_acc.update_state(y, y_pred, target_mask[:,1:])
 
 
-    self.top_k_acc_loop(y, y_pred)
+    self._top_k_acc_loop(y, y_pred)
 
 
     acc_top1 = self.seq_acc_1.result()
@@ -592,7 +592,7 @@ class Seq2SeqModelConstructor(tf.keras.Model):
       self.tot_acc.update_state(y, y_pred, target_mask[:,1:])
 
 
-      self.top_k_acc_loop(y, y_pred)
+      self._top_k_acc_loop(y, y_pred)
 
       print((f"Batch: {batch} - batch_loss: {loss:.3f} -"),
             (f"acc_1: {self.seq_acc_1.result().numpy():.3f} -"),
