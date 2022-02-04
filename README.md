@@ -51,4 +51,4 @@ of one hot encoding (one hot is favorable for reaction prediction). So I may mak
 including preprocessing helper functions. Also should make it command line runnable with a yaml format for input.
 On the todo list!
 
-I have a [Google Colab in this repo](https://github.com/dfossl/IWSS_ReactionPrediction_CoLab) that walks through this code in detail, so that is my pseudo-documentation until I properly comment the rest of these.
+I have a [Google Colab in this repo](https://github.com/dfossl/IWSS_ReactionPrediction_CoLab) that walks through this code in detail, so that is my pseudo-documentation until I properly comment the rest of this.
